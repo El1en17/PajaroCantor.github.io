@@ -1,0 +1,52 @@
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f0f0f0;
+    margin: 0;
+}
+.login-container {
+    background-color: white;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    text-align: center;
+    width: 300px; /* Ancho fijo para el contenedor */
+}
+.login-container h2 {
+    margin-bottom: 20px;
+}
+.login-container input[type="email"],
+.login-container input[type="password"] {
+    width: calc(100% - 22px); /* Ajustar por el padding */
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+    font-size: 16px;
+}
+.login-container input::placeholder {
+    color: #657786; /* Color del placeholder similar a Twitter */
+    opacity: 1; /* Asegura que el placeholder sea completamente opaco */
+}
+.login-container button {
+    width: 100%;
+    padding: 10px;
+    background-color: #007BFF;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+}
+.login-container button:hover {
+    background-color: #0056b3;
+}
+.toggle-form {
+    margin-top: 20px;
+    cursor: pointer;
+    color: #007BFF;
+}

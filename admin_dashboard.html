@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panel de Administrador</title>
+
+    <link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+
+    <div id="header">
+        <ul class="nav">
+            <li><a href="#" onclick="showSection('adminInfo')">Inicio</a></li>
+            <li><a href="#">Opciones</a>
+                <ul>
+                    <li><a href="#" onclick="showSection('docentes')">Docentes (Maestros)</a></li>
+                    <li><a href="#" onclick="showSection('tutores')">Tutores (Padres)</a></li>
+                    <li><a href="#" onclick="showSection('alumnos')">Alumnos</a></li>
+                </ul>
+            </li>
+            <li><a href="#" onclick="showSection('acercaDe')">Acerca de</a></li>
+            <li><a href="#" onclick="showSection('contacto')">Contacto</a></li>
+        </ul>
+    </div>
+
+    <div class="content">
+        <div id="adminInfo" class="section">
+            <h2>Información del Administrador</h2>
+            <p>Nombre: Juan Pérez</p>
+            <p>Correo: ofsqueletonsektor@gmail.com</p>
+            <p>Teléfono: 123456789</p>
+        </div>
+
+        <div id="docentes" class="section hidden">
+            <h2>Docentes (Maestros)</h2>
+            <button onclick="showSection('addCredentials', 'docente')">Añadir Docente</button>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Nombre</th>
+                        <th>Correo</th>
+                        <th>Teléfono</th>
+                        <th>Matrícula SEP</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody id="docentesTable"></tbody>
+            </table>
+        </div>
+
+        <div id="tutores" class="section hidden">
+            <h2>Tutores (Padres)</h2>
+            <button onclick="showSection('addCredentials', 'tutor')">Añadir Tutor</button>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Nombre</th>
+                        <th>Correo</th>
+                        <th>Teléfono</th>
+                        <th>Alumno</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody id="tutoresTable"></tbody>
+            </table>
+        </div>
+
+        <div id="alumnos" class="section hidden">
+            <h2>Alumnos</h2>
+            <button onclick="showSection('addCredentials', 'alumno')">Añadir Alumno</button>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Matrícula</th>
+                        <th>Nombre</th>
+                        <th>Grado</th>
+                        <th>Grupo</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody id="alumnosTable"></tbody>
+            </table>
+        </div>
+
+        <div id="acercaDe" class="section hidden">
+            <h2>Acerca de</h2>
+            <h3>Misión</h3>
+            <p>Proporcionar una educación integral que fomente el desarrollo académico, social y emocional de nuestros estudiantes, preparándolos para enfrentar los retos del futuro.</p>
+            <h3>Visión</h3>
+            <p>Ser una institución educativa de excelencia, reconocida por su compromiso con la formación de ciudadanos responsables y competentes, capaces de contribuir positivamente a la sociedad.</p>
+        </div>
+
+        <div id="contacto" class="section hidden">
+            <h2>Contacto</h2>
+            <p><strong>Dirección:</strong> Calle Ficticia 123, Ciudad, País</p>
+            <p><strong>Teléfono:</strong> (123) 456-7890</p>
+            <p><strong>Correo Electrónico:</strong> contacto@escuelaxyz.edu</p>
+            <p><strong>Sitio Web:</strong> <a href="http://www.escuelaxyz.edu" target="_blank">www.escuelaxyz.edu</a></p>
+        </div>
+
+        <div id="addCredentials" class="section hidden credentials-container">
+            <h2>Añadir Credenciales</h2>
+            <form onsubmit="saveCredentials(event)">
+                <select name="role" id="role" required onchange="toggleFields()">
+                    <option value="">Seleccionar Rol</option>
+                    <option value="docente">Docente</option>
+                    <option value="tutor">Tutor</option>
+                    <option value="alumno">Alumno</option>
+                </select>
+                <input type="text" name="nombre" placeholder="Nombre" required>
+                <input type="text" name="primer-apellido" placeholder="Primer Apellido" required>
+                <input type="text" name="segundo-apellido" placeholder="Segundo Apellido" class="hidden">
+                <input type="email" name="email" placeholder="Correo Electrónico" class="hidden">
+                <input type="text" name="telefono" placeholder="Teléfono" class="hidden">
+                <input type="password" name="contrasena" placeholder="Contraseña" class="hidden">
+                <input type="text" name="matricula" placeholder="Matrícula Escolar" class="hidden">
+                <input type="text" name="grado" placeholder="Grado" class="hidden">
+                <input type="text" name="grupo" placeholder="Grupo" class="hidden">
+                <button type="submit">Guardar</button>
+            </form>
+            <p id="error-message" class="hidden">Ocurrió un error al guardar. Intenta nuevamente.</p>
+        </div>
+    </div>
+
+    
+    <div id="editModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeEditModal()">&times;</span>
+            <h2>Editar Usuario</h2>
+            <form id="editUser Form"> <!-- Corregido el ID del formulario -->
+                <div class="form-group">
+                    <label for="editName">Nombre:</label>
+                    <input type="text" id="editName" name="editName" required>
+                </div>
+                <div class="form-group">
+                    <label for="editEmail">Correo:</label>
+                    <input type="email" id="editEmail" name="editEmail" required>
+                </div>
+                <div class="form-group">
+                    <label for="editTelephone">Teléfono:</label>
+                    <input type="text" id="editTelephone" name="editTelephone" required>
+                </div>
+                <input type="hidden" id="editUser Id"> <!-- Corregido el ID del usuario -->
+                <button type="submit">Actualizar</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+<script src="script.js"></script>
+
+</body>
+</html>

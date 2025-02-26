@@ -1,0 +1,241 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    display: flex;
+}
+
+#header {
+    width: 200px;
+    background-color: #007BFF;
+    height: 100vh;
+    position: fixed;
+}
+
+ul, ol {
+    list-style: none;
+}
+
+.nav {
+    padding: 10px;
+}
+
+.nav > li {
+    position: relative;
+}
+
+.nav li a {
+    background-color: #007BFF;
+    color: #fff;
+    text-decoration: none;
+    padding: 10px 12px;
+    display: block;
+    transition: background-color 0.3s;
+}
+
+.nav li a:hover {
+    background-color: #0056b3;
+}
+
+.nav li ul {
+    display: none;
+    position: absolute;
+    left: 100%;
+    top: 0;
+    min-width: 140px;
+    background-color: #007BFF;
+    z-index: 1000;
+}
+
+.nav li:hover > ul {
+    display: block;
+}
+
+.nav li ul li {
+    position: relative;
+}
+
+.nav li ul li a {
+    padding: 10px;
+}
+
+.content {
+    margin-left: 220px;
+    padding: 20px;
+    background-color: white;
+    color: black;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    flex-grow: 1;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+th, td {
+    border: 1px solid #ccc;
+    padding: 10px;
+    text-align: left;
+}
+
+th {
+    background-color: #007BFF;
+    color: white;
+}
+
+h2 {
+    margin-top: 0;
+}
+
+.hidden {
+    display: none;
+}
+
+.credentials-container {
+    background-color: white;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    text-align: center;
+    margin-top: 20px;
+}
+
+.credentials-container h2 {
+    margin-bottom: 20px;
+}
+
+.credentials-container input[type="text"],
+.credentials-container input[type="email"],
+.credentials-container input[type="password"],
+.credentials-container select {
+    width: calc(100% - 22px);
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+.credentials-container button {
+    width: 100%;
+    padding: 10px;
+    background-color: #007BFF;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.credentials-container button:hover {
+    background-color: #0056b3;
+}
+
+#error-message {
+    color: red;
+}
+
+.modal {
+display: none;
+position: fixed;
+left: 0;
+top: 0;
+width: 100%;
+height: 100%;
+background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal-content {
+background-color: white;
+padding: 20px;
+margin: 10% auto;
+width: 50%;
+border-radius: 8px;
+text-align: center;
+}
+
+.close {
+position: absolute;
+right: 10px;
+top: 5px;
+font-size: 20px;
+cursor: pointer;
+}
+
+.modal {
+display: none; /* Oculto por defecto */
+position: fixed; /* Fijo en la pantalla */
+left: 0;
+top: 0;
+width: 100%; /* Ancho completo */
+height: 100%; /* Alto completo */
+background-color: rgba(0, 0, 0, 0.5); /* Fondo semi-transparente */
+z-index: 1000; /* Asegúrate de que esté por encima de otros elementos */
+}
+
+.modal-content {
+background-color: white; /* Fondo blanco */
+margin: 10% auto; /* Margen superior e inferior */
+padding: 20px; /* Espaciado interno */
+border-radius: 8px; /* Bordes redondeados */
+width: 400px; /* Ancho fijo */
+box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra */
+position: relative; /* Para posicionar el botón de cerrar */
+}
+
+.close {
+position: absolute; /* Posición absoluta */
+right: 15px; /* A la derecha */
+top: 10px; /* Arriba */
+font-size: 24px; /* Tamaño de fuente */
+cursor: pointer; /* Cambia el cursor al pasar el mouse */
+color: #007BFF; /* Color del botón de cerrar */
+}
+
+h2 {
+margin-bottom: 20px; /* Espaciado inferior */
+color: #333; /* Color del texto */
+}
+
+.form-group {
+margin-bottom: 15px; /* Espaciado entre grupos de formulario */
+}
+
+label {
+display: block; /* Hacer que las etiquetas ocupen toda la línea */
+margin-bottom: 5px; /* Espaciado inferior */
+font-weight: bold; /* Negrita */
+color: #555; /* Color del texto */
+}
+
+input[type="text"],
+input[type="email"] {
+width: 100%; /* Ancho completo */
+padding: 10px; /* Espaciado interno */
+border: 1px solid #ccc; /* Borde gris claro */
+border-radius: 4px; /* Bordes redondeados */
+box-sizing: border-box; /* Incluye el padding y el borde en el ancho total */
+}
+
+button {
+width: 100%; /* Ancho completo */
+padding: 10px; /* Espaciado interno */
+background-color: #007BFF; /* Color de fondo */
+border: none; /* Sin borde */
+border-radius: 4px; /* Bordes redondeados */
+color: white; /* Color del texto */
+font-size: 16px; /* Tamaño de fuente */
+cursor: pointer; /* Cambia el cursor al pasar el mouse */
+transition: background-color 0.3s; /* Transición suave para el color de fondo */
+}
+
+button:hover {
+background-color: #0056b3; /* Color de fondo al pasar el mouse */
+}
